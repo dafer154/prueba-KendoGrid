@@ -12,7 +12,7 @@ export class ListaPersonasComponent implements OnInit {
   constructor() { }
 
   gridData: PersonaClass[] = Personas;
-  resultados: PersonaClass[];
+  resultados: PersonaClass[] = Personas;
   showResultado = false;
   tabla = true;
 
@@ -27,7 +27,7 @@ export class ListaPersonasComponent implements OnInit {
     console.log(query);
     if (!query) {
       console.log(this.gridData);
-      return this.gridData;
+      return this.resultados = this.gridData;
     }
     this.resultados = this.gridData.filter(function (person)  {
         if (person.nombrePersona.indexOf(query) >= 0) {

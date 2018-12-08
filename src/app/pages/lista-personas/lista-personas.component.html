@@ -10,15 +10,15 @@
     <button type="submit"><i class="fa fa-times"></i></button>
   </div>
 
-  <kendo-grid [data]="gridData" [height]="410">
-    <kendo-grid-column field="id" title="ID" width="40"> </kendo-grid-column>
-    <kendo-grid-column field="nombrePersona" title="Nombre" width="250">
-    </kendo-grid-column>
-    <kendo-grid-column field="telefonoPersona" title="Telefono">
-    </kendo-grid-column>
-    <kendo-grid-column field="direccionPersona" title="Direccion" width="80">
-    </kendo-grid-column>
-  </kendo-grid>
+  <kendo-grid [data]="resultados" [height]="410">
+      <kendo-grid-column field="id" title="ID" width="40"> </kendo-grid-column>
+      <kendo-grid-column field="nombrePersona" title="Nombre" width="250">
+      </kendo-grid-column>
+      <kendo-grid-column field="telefonoPersona" title="Telefono">
+      </kendo-grid-column>
+      <kendo-grid-column field="direccionPersona" title="Direccion" width="80">
+      </kendo-grid-column>
+    </kendo-grid>
 </div>
 
 <style>
