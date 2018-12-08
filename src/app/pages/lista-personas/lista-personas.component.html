@@ -1,17 +1,30 @@
-<kendo-grid [data]="gridData" [height]="410">
-  <kendo-grid-column field="ProductID" title="ID" width="40">
-  </kendo-grid-column>
-  <kendo-grid-column field="ProductName" title="Name" width="250">
-  </kendo-grid-column>
-  <kendo-grid-column field="Category.CategoryName" title="Category">
-  </kendo-grid-column>
-  <kendo-grid-column field="UnitPrice" title="Price" width="80">
-  </kendo-grid-column>
-  <kendo-grid-column field="UnitsInStock" title="In stock" width="80">
-  </kendo-grid-column>
-  <kendo-grid-column field="Discontinued" title="Discontinued" width="120">
-    <ng-template kendoGridCellTemplate let-dataItem>
-      <input type="checkbox" [checked]="dataItem.Discontinued" disabled />
-    </ng-template>
-  </kendo-grid-column>
-</kendo-grid>
+<div class="container wrapList">
+  <h1>Lista de las personas</h1>
+  <div class="wrap-search">
+    <input
+      (keyup)="buscarPersona($event)"
+      type="text"
+      placeholder="Buscar personas por nombre"
+      required=""
+    />
+    <button type="submit"><i class="fa fa-times"></i></button>
+  </div>
+  
+
+  <kendo-grid [data]="gridData" [height]="410">
+    <kendo-grid-column field="id" title="ID" width="40"> </kendo-grid-column>
+    <kendo-grid-column field="nombrePersona" title="Nombre" width="250">
+    </kendo-grid-column>
+    <kendo-grid-column field="telefonoPersona" title="Telefono">
+    </kendo-grid-column>
+    <kendo-grid-column field="direccionPersona" title="Direccion" width="80">
+    </kendo-grid-column>
+  </kendo-grid>
+</div>
+
+<style>
+  .wrapList {
+    margin-top: 8%;
+    padding-bottom: 9%;
+  }
+</style>
