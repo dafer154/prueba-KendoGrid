@@ -1,3 +1,6 @@
+
+/*
+
 export class PersonaClass {
     id: number;
     nombrePersona: string;
@@ -12,3 +15,18 @@ constructor(id: number, nombrePersona: string, telefonoPersona: string, direccio
   this.direccionPersona = direccionPersona;
   }
 }
+*/
+
+
+
+export class PersonaClass {
+
+  constructor(
+    public id: number,
+    public nombrePersona: string,
+    public telefonoPersona: string,
+    public direccionPersona: string
+  ) {  }
+
+}
+

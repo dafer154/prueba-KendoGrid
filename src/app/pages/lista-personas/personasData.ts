@@ -28,7 +28,7 @@ export const Personas = [
         "nombrePersona": "Carlos",
         "telefonoPersona": "234434334",
         "direccionPersona": "calle 18 #50-97"
-    }
+    },
     {
         "id": 6,
         "nombrePersona": "Candelo",
