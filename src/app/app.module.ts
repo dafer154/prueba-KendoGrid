@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 //Forms in Angular
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { PersonasComponent } from './pages/personas/personas.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     GridModule,
     BrowserAnimationsModule
 

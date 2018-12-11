@@ -3,6 +3,7 @@ import { Personas } from '../lista-personas/personasData';
 import { PersonaClass } from '../classes/persona';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-personas',
   templateUrl: './personas.component.html',
@@ -10,69 +11,43 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PersonasComponent implements OnInit {
 
-  prueba: PersonaClass[] = Personas;
-  //model: PersonaClass;
-  //model: any = {};
-
-  model = new PersonaClass(18, 'Dr IQ', 'pruebilla', 'Chuck Overstreet');
-
-
-
+  personaForm: FormGroup;
+  model: PersonaClass;
+  submittedModel: PersonaClass;
   submitted = false;
+  arrayPersonas: PersonaClass[] = Personas;
 
-  /*
-  onSubmit() { this.submitted = true; }
-  */
-  constructor() {
+  constructor(private formBuilder: FormBuilder) {
+
+
    }
 
-  ngOnInit() {
-  }
-
-  generateId() {
+   generateId() {
     const ultimateId = Personas.length - 1;
-    return Personas[ultimateId].id;
+    const idPersona = Personas[ultimateId].id;
+    const generatedId: number = idPersona + 1;
+    return generatedId;
   }
 
-  /*
+  ngOnInit() {
 
-  crearPersona(nombre: HTMLInputElement, telefono: HTMLInputElement, direccion: HTMLInputElement): boolean {
-    const ultimatedID = this.generateId();
-    const generatedId = ultimatedID + 1;
-    this.prueba.push(new PersonaClass(generatedId, nombre.value, telefono.value, direccion.value));
+    this.model = new PersonaClass(10, 'prueba', 'prueba', 'prueba');
 
-    console.log(this.prueba);
+      this.personaForm = this.formBuilder.group({
+        id: [this.model.id],
+        nombrePersona:     [this.model.nombrePersona, Validators.required],
+        telefonoPersona: [this.model.telefonoPersona, Validators.required],
+        direccionPersona:    [this.model.direccionPersona, Validators.required]
+      });
 
-
-    return false;
   }
 
-  */
-
-
-  
-  crearPersona() {
-    const ultimatedID = this.generateId();
-    const generatedId = ultimatedID + 1;
-    this.model = new PersonaClass(generatedId, '', '' , '');
-    this.prueba.push(this.model);
-    console.log(this.model);
+  onSubmit({ value, valid }: { value: PersonaClass, valid: boolean }) {
+    this.submitted = true;
+    this.submittedModel = value;
+    this.submittedModel['id'] = this.generateId();
+    this.arrayPersonas.push(this.submittedModel);
+    console.log(this.arrayPersonas);
   }
-
-
-/*
- onSubmit() {
-  const ultimatedID = this.generateId();
-  const generatedId = ultimatedID + 1;
-  this.prueba.push(this.model);
-  console.log(this.model);
-}
-*/
-
-onSubmit() {
-  this.submitted = true;
-}
-
-
 
 }

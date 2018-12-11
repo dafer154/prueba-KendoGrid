@@ -49,35 +49,30 @@
 
 
 
+<!-- Esta funciona ome ome-->
+
 <div class="container">
   <h1>Creacion de personas</h1>
 
-  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <form [formGroup]="personaForm" (ngSubmit)="onSubmit(personaForm)">
                     <div class="form-group">
                         <label for="nombrePersona">First Name</label>
-                        <input type="text" class="form-control" name="nombrePersona" [(ngModel)]="model.nombrePersona" #nombrePersona="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nombrePersona.invalid }" required />
-                        <div *ngIf="f.submitted && nombrePersona.invalid" class="invalid-feedback">
-                            <div *ngIf="nombrePersona.errors.required">First Name is required</div>
-                        </div>
+                        <input type="text" class="form-control" name="nombrePersona" formControlName="nombrePersona" />
+                        <div class="alert alert-danger" [hidden]="personaForm.controls.nombrePersona.valid">Name is required</div>
                     </div>
                     <div class="form-group">
                         <label for="telefonoPersona">First Name</label>
-                        <input type="text" class="form-control" name="telefonoPersona" [(ngModel)]="model.telefonoPersona" #telefonoPersona="ngModel" [ngClass]="{ 'is-invalid': f.submitted && telefonoPersona.invalid }" required />
-                        <div *ngIf="f.submitted && telefonoPersona.invalid" class="invalid-feedback">
-                            <div *ngIf="telefonoPersona.errors.required">First Name is required</div>
-                        </div>
+                        <input type="text" class="form-control" name="telefonoPersona" formControlName="telefonoPersona" />
+                        <div class="alert alert-danger" [hidden]="personaForm.controls.telefonoPersona.valid">Tel is required</div>
                     </div>
                     <div class="form-group">
                         <label for="direccionPersona">First Name</label>
-                        <input type="text" class="form-control" name="direccionPersona" [(ngModel)]="model.direccionPersona" #direccionPersona="ngModel" [ngClass]="{ 'is-invalid': f.submitted && direccionPersona.invalid }" required />
-                        <div *ngIf="f.submitted && direccionPersona.invalid" class="invalid-feedback">
-                            <div *ngIf="direccionPersona.errors.required">First Name is required</div>
-                        </div>
+                        <input type="text" class="form-control" name="direccionPersona" formControlName="direccionPersona" />
+                        <div class="alert alert-danger" [hidden]="personaForm.controls.direccionPersona.valid">Direccion is required</div>
                     </div>
-                    <button type="button" class="btn btn-default" (click)="crearPersona(); f.reset()">New Hero</button>
+                    <button type="submit" class="btn btn-default" [disabled]="!personaForm.valid">Submit</button> 
   </form>
 </div>
-
 
 
 

@@ -22,10 +22,10 @@ constructor(id: number, nombrePersona: string, telefonoPersona: string, direccio
 export class PersonaClass {
 
   constructor(
-    public id: number,
-    public nombrePersona: string,
-    public telefonoPersona: string,
-    public direccionPersona: string
+    public id?: number,
+    public nombrePersona?: string,
+    public telefonoPersona?: string,
+    public direccionPersona?: string
   ) {  }
 
 }
