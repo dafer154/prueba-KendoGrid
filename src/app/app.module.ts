@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PersonasComponent } from './pages/personas/personas.component';
 import { ReadComponent } from './pages/read/read.component';
 import { CreateComponent } from './pages/create/create.component';
+import { FormTemplateComponent } from './pages/form-template/form-template.component';
+import { FormDataComponent } from './pages/form-data/form-data.component';
 
 
 
@@ -25,7 +27,9 @@ import { CreateComponent } from './pages/create/create.component';
     ListaPersonasComponent,
     PersonasComponent,
     ReadComponent,
-    CreateComponent
+    CreateComponent,
+    FormTemplateComponent,
+    FormDataComponent
   ],
   imports: [
     BrowserModule,
