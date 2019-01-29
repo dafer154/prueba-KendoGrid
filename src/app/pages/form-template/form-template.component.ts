@@ -16,8 +16,24 @@ export class FormTemplateComponent implements OnInit {
   usuario: Object = {
     nombre: null,
     apellido: null,
-    email: null
+    email: null,
+    pais: "",
+    sexo: "Hombre"
   };
+
+  paises = [{
+    codigo: "CRI",
+    nombre: "Costa rica"
+  },
+  {
+    codigo: "COL",
+    nombre: "Colombia"
+  }
+];
+
+  sexos: any = ["Hombre","mujer"];
+
+  
 
   constructor() { }
 

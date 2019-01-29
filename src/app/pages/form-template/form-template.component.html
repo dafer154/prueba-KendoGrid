@@ -1,87 +1,113 @@
 <div class="container">
-
-<h4>Formularios <small>template</small></h4>
-<hr>
-<form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="">
-
-  <div>
-
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Nombre</label>
-      <div class="col-8">
-
-        <input class="form-control"
-               type="text"
-               placeholder="Nombre"
-               name="nombre"
-               [(ngModel)]= "usuario.nombre"
-               minlength="5"
-               required
-               #nombre="ngModel"
-               >
-        <div *ngIf="nombre.errors?.required">
-          El campo es requerido
+  <h4>Formularios <small>template</small></h4>
+  <hr />
+  <form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="">
+    <div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Nombre</label>
+        <div class="col-8">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Nombre"
+            name="nombre"
+            [(ngModel)]="usuario.nombre"
+            minlength="5"
+            required
+            #nombre="ngModel"
+          />
+          <div *ngIf="nombre.errors?.required">El campo es requerido</div>
+          <div *ngIf="nombre.errors?.minlength">
+            El campo requiere
+            {{ nombre.errors.minlength.requiredLength }} caracteres
+          </div>
         </div>
-        <div *ngIf="nombre.errors?.minlength">
-          El campo requiere {{ nombre.errors.minlength.requiredLength}} caracteres
+      </div>
+
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Apellido</label>
+        <div class="col-8">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Apellido"
+            name="apellido"
+            [(ngModel)]="usuario.apellido"
+            required
+            #apellido="ngModel"
+          />
+          <div *ngIf="apellido.errors?.required">El campo es requerido</div>
         </div>
       </div>
     </div>
 
     <div class="form-group row">
-      <label class="col-2 col-form-label">Apellido</label>
-      <div class="col-8">
-
-        <input class="form-control"
-               type="text"
-               placeholder="Apellido"
-               name="apellido"
-               [(ngModel)]="usuario.apellido"
-               required
-               #apellido = "ngModel"
-               >
-               <div *ngIf="apellido.errors?.required">
-                El campo es requerido
-              </div>
+      <label class="col-2 col-form-label">Correo</label>
+      <div class="col-md-8">
+        <input
+          class="form-control"
+          type="email"
+          placeholder="Correo electrónico"
+          name="email"
+          [(ngModel)]="usuario.email"
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          #email="ngModel"
+        />
+        <div *ngIf="email.errors?.required">El campo es requerido</div>
+        <div *ngIf="email.errors?.pattern">
+          El campo del correo esta mal escrito
+        </div>
       </div>
     </div>
 
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Correo</label>
-    <div class="col-md-8">
-
-      <input class="form-control"
-             type="email"
-             placeholder="Correo electrónico"
-             name="email"
-             [(ngModel)]="usuario.email"
-             required
-             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-             #email = "ngModel"
-             >
-             <div *ngIf="email.errors?.required">
-              El campo es requerido
-            </div>
-             <div *ngIf="email.errors?.pattern">
-              El campo del correo esta mal escrito
-            </div>
-             
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Pais</label>
+      <div class="col-md-8">
+        <select class="form-control" name="pais" [(ngModel)]="usuario.pais">
+          <option value="">Seleccione un pais</option>
+          <option *ngFor="let pais of paises" [value]="pais.codigo">{{
+            pais.nombre
+          }}</option>
+        </select>
+      </div>
     </div>
-  </div>
 
-
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">&nbsp;</label>
-    <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary" [disabled]="!forma.valid">
-        Guardar
-      </button>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Sexo</label>
+      <div class="col-md-8">
+        <div class="form-check" *ngFor="let s of sexos">
+          <input
+            [(ngModel)]="usuario.sexo"
+            class="form-check-input"
+            type="radio"
+            name="sexo"
+            [value]="s"
+            id="exampleRadios1"
+            checked
+          />
+          <label class="form-check-label" for="exampleRadios1">
+            {{s}}
+          </label>
+        </div>
+      </div>
     </div>
-  </div>
 
-</form>
-
+    <div class="form-group row">
+      <label class="col-2 col-form-label">&nbsp;</label>
+      <div class="input-group col-md-8">
+        <button
+          type="submit"
+          class="btn btn-outline-primary"
+          [disabled]="!forma.valid"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
+
+<pre>
+  {{usuario |json}}
+</pre>
