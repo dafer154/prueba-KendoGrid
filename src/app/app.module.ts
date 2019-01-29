@@ -18,6 +18,7 @@ import { ReadComponent } from './pages/read/read.component';
 import { CreateComponent } from './pages/create/create.component';
 import { FormTemplateComponent } from './pages/form-template/form-template.component';
 import { FormDataComponent } from './pages/form-data/form-data.component';
+import { RxjsComponent } from './pages/rxjs/rxjs.component';
 
 
 
@@ -29,7 +30,8 @@ import { FormDataComponent } from './pages/form-data/form-data.component';
     ReadComponent,
     CreateComponent,
     FormTemplateComponent,
-    FormDataComponent
+    FormDataComponent,
+    RxjsComponent
   ],
   imports: [
     BrowserModule,
